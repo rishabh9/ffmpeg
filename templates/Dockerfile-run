@@ -230,6 +230,17 @@ RUN \
         make ; \
         make install ; \
         rm -rf ${dir}
+## speex https://www.speex.org/
+RUN \
+        dir=/tmp/speex ; \
+        mkdir -p ${dir} ; \
+        curl -sLO http://downloads.xiph.org/releases/speex/${SPEEX_VERSION}.tar.gz && \
+        echo ${SPEEX_SHA256SUM} | sha256sum --check && \
+        tar -zx --strip-components=1 -f ${SPEEX_VERSION}.tar.gz && \
+        ./configure --prefix="${PREFIX}" --disable-static --enable-shared && \
+        make && \
+        make install && \
+        rm -rf ${DIR}
 
 ## ffmpeg https://ffmpeg.org/
 RUN  \
@@ -246,6 +257,7 @@ RUN  \
         --enable-libopencore-amrwb \
         --enable-gpl \
         --enable-libass \
+        --enable-libspeex \
         --enable-libfreetype \
         --enable-libvidstab \
         --enable-libmp3lame \
