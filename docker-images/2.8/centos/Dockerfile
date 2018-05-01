@@ -40,6 +40,7 @@ ENV         FFMPEG_VERSION=2.8.14     \
             LIBVIDSTAB_VERSION=1.1.0  \
             KVAZAAR_VERSION=1.2.0     \
             AOM_VERSION=master        \
+            SPEEX_VERSION=speex-1.2.0 \
             SRC=/usr/local
 
 ARG         OGG_SHA256SUM="e19ee34711d7af328cb26287f4137e70630e7261b17cbe3cd41011d73a654692  libogg-1.3.2.tar.gz"
@@ -51,6 +52,7 @@ ARG         FREETYPE_SHA256SUM="5d03dd76c2171a7601e9ce10551d52d4471cf92cd205948e
 ARG         LIBVIDSTAB_SHA256SUM="14d2a053e56edad4f397be0cb3ef8eb1ec3150404ce99a426c4eb641861dc0bb  v1.1.0.tar.gz"
 ARG         LIBASS_SHA256SUM="8fadf294bf701300d4605e6f1d92929304187fca4b8d8a47889315526adbafd7  0.13.7.tar.gz"
 ARG         FRIBIDI_SHA256SUM="3fc96fa9473bd31dcb5500bdf1aa78b337ba13eb8c301e7c28923fea982453a8  0.19.7.tar.gz"
+ARG         SPEEX_SHA256SUM="eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094  speex-1.2.0.tar.gz"
 
 
 RUN     buildDeps="autoconf \
@@ -307,6 +309,17 @@ RUN \
         make install ; \
         rm -rf ${dir}
 
+RUN \
+        dir=/tmp/speex ; \
+        mkdir -p ${dir} ; \
+        curl -sLO http://downloads.xiph.org/releases/speex/${SPEEX_VERSION}.tar.gz && \
+        echo ${SPEEX_SHA256SUM} | sha256sum --check && \
+        tar -zx --strip-components=1 -f ${SPEEX_VERSION}.tar.gz && \
+        ./configure --prefix="${PREFIX}" --disable-static --enable-shared && \
+        make && \
+        make install && \
+        rm -rf ${DIR}
+
 ## ffmpeg https://ffmpeg.org/
 RUN  \
         DIR=$(mktemp -d) && cd ${DIR} && \
@@ -322,6 +335,7 @@ RUN  \
         --enable-libopencore-amrwb \
         --enable-gpl \
         --enable-libass \
+        --enable-libspeex \
         --enable-libfreetype \
         --enable-libvidstab \
         --enable-libmp3lame \
