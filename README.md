@@ -39,18 +39,18 @@ Test
 ----
 
 ```
-ffmpeg version 3.3.4 Copyright (c) 2000-2017 the FFmpeg developers
-  built with gcc 5.4.0 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 20160609
-  configuration: --disable-debug --disable-doc --disable-ffplay --enable-shared --enable-avresample --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-gpl --enable-libass --enable-libfreetype --enable-libvidstab --enable-libmp3lame --enable-libopenjpeg --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx265 --enable-libxvid --enable-libx264 --enable-nonfree --enable-openssl --enable-libfdk_aac --enable-postproc --enable-small --enable-version3 --extra-cflags=-I/opt/ffmpeg/include --extra-ldflags=-L/opt/ffmpeg/lib --extra-libs=-ldl --prefix=/opt/ffmpeg
-  libavutil      55. 58.100 / 55. 58.100
-  libavcodec     57. 89.100 / 57. 89.100
-  libavformat    57. 71.100 / 57. 71.100
-  libavdevice    57.  6.100 / 57.  6.100
-  libavfilter     6. 82.100 /  6. 82.100
-  libavresample   3.  5.  0 /  3.  5.  0
-  libswscale      4.  6.100 /  4.  6.100
-  libswresample   2.  7.100 /  2.  7.100
-  libpostproc    54.  5.100 / 54.  5.100
+ffmpeg version 4.0 Copyright (c) 2000-2018 the FFmpeg developers
+  built with gcc 5.4.0 (Ubuntu 5.4.0-6ubuntu1~16.04.9) 20160609
+  configuration: --disable-debug --disable-doc --disable-ffplay --enable-shared --enable-avresample --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-gpl --enable-libass --enable-libspeex --enable-libfreetype --enable-libvidstab --enable-libmp3lame --enable-libopenjpeg --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx265 --enable-libxvid --enable-libx264 --enable-nonfree --enable-openssl --enable-libfdk_aac --enable-libkvazaar --enable-libaom --extra-libs=-lpthread --enable-postproc --enable-small --enable-version3 --extra-cflags=-I/opt/ffmpeg/include --extra-ldflags=-L/opt/ffmpeg/lib --extra-libs=-ldl --prefix=/opt/ffmpeg
+  libavutil      56. 14.100 / 56. 14.100
+  libavcodec     58. 18.100 / 58. 18.100
+  libavformat    58. 12.100 / 58. 12.100
+  libavdevice    58.  3.100 / 58.  3.100
+  libavfilter     7. 16.100 /  7. 16.100
+  libavresample   4.  0.  0 /  4.  0.  0
+  libswscale      5.  1.100 /  5.  1.100
+  libswresample   3.  1.100 /  3.  1.100
+  libpostproc    55.  1.100 / 55.  1.100
 
   configuration:
     --disable-debug
@@ -62,6 +62,7 @@ ffmpeg version 3.3.4 Copyright (c) 2000-2017 the FFmpeg developers
     --enable-libopencore-amrwb
     --enable-gpl
     --enable-libass
+    --enable-libspeex
     --enable-libfreetype
     --enable-libvidstab
     --enable-libmp3lame
@@ -76,6 +77,9 @@ ffmpeg version 3.3.4 Copyright (c) 2000-2017 the FFmpeg developers
     --enable-nonfree
     --enable-openssl
     --enable-libfdk_aac
+    --enable-libkvazaar
+    --enable-libaom
+    --extra-libs=-lpthread
     --enable-postproc
     --enable-small
     --enable-version3
@@ -145,6 +149,7 @@ See Dockerfile-env to update a version
 - [LIBFRIDIBI_VERSION](https://www.fribidi.org/): [GNU General Public License (GPL) version 2](https://cgit.freedesktop.org/fribidi/fribidi/plain/COPYING)
 - [X264_VERSION](http://www.videolan.org/developers/x264.html): [GNU General Public License (GPL) version 2](https://git.videolan.org/?p=x264.git;a=blob_plain;f=COPYING;hb=HEAD)
 - [X265_VERSION](https://bitbucket.org/multicoreware/x265/downloads/):[GNU General Public License (GPL) version 2](https://bitbucket.org/multicoreware/x265/raw/f8ae7afc1f61ed0db3b2f23f5d581706fe6ed677/COPYING)
+- [SPEEX_VERSION](https://www.speex.org/): [Revised BSD License](https://www.xiph.org/licenses/bsd/speex/)
 
 
 Contribute
