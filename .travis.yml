@@ -61,6 +61,7 @@ before_script:
 script:
   - docker build -t "${image}" --build-arg MAKEFLAGS="-j$(($(grep -c ^processor /proc/cpuinfo) + 1))" docker-images/${VERSION}/${VARIANT}
   - docker run --rm ${image} -buildconf
+  - docker tag ${image} ${DOCKER_USERNAME}/${image}
   - docker tag ${image} ${BINTRAY_REPO}/${image}
 
 after_script:

@@ -2,11 +2,14 @@
 
 IMAGE="${IMAGE_NAME}:${VERSION}-${VARIANT:-ubuntu}"
 
+echo "Pushing image: ${IMAGE} to Docker Hub"
 # Docker Registry
 echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin && \
 docker push $DOCKER_USERNAME/$IMAGE
+docker logout
 
-
+echo "Pushing image: ${IMAGE} to a Docker registry on Bintray"
 # Bintray's Docker Registry 
 echo "${BINTRAY_API_KEY}" | docker login -u "${DOCKER_USERNAME}" --password-stdin $BINTRAY_REPO && \
 docker push $BINTRAY_REPO/$IMAGE
+docker logout $BINTRAY_REPO
