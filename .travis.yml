@@ -4,38 +4,44 @@ language: bash
 services: docker
 
 env:
- - VERSION=snapshot VARIANT=ubuntu
- - VERSION=snapshot VARIANT=alpine
- - VERSION=snapshot VARIANT=centos
- - VERSION=snapshot VARIANT=scratch
- - VERSION=4.0 VARIANT=ubuntu
- - VERSION=4.0 VARIANT=alpine
- - VERSION=4.0 VARIANT=centos
- - VERSION=4.0 VARIANT=scratch
- - VERSION=3.4 VARIANT=ubuntu
- - VERSION=3.4 VARIANT=alpine
- - VERSION=3.4 VARIANT=centos
- - VERSION=3.4 VARIANT=scratch
- - VERSION=3.3 VARIANT=ubuntu
- - VERSION=3.3 VARIANT=alpine
- - VERSION=3.3 VARIANT=centos
- - VERSION=3.3 VARIANT=scratch
- - VERSION=3.2 VARIANT=ubuntu
- - VERSION=3.2 VARIANT=alpine
- - VERSION=3.2 VARIANT=centos
- - VERSION=3.2 VARIANT=scratch
- - VERSION=3.1 VARIANT=ubuntu
- - VERSION=3.1 VARIANT=alpine
- - VERSION=3.1 VARIANT=centos
- - VERSION=3.1 VARIANT=scratch
- - VERSION=3.0 VARIANT=ubuntu
- - VERSION=3.0 VARIANT=alpine
- - VERSION=3.0 VARIANT=centos
- - VERSION=3.0 VARIANT=scratch
- - VERSION=2.8 VARIANT=ubuntu
- - VERSION=2.8 VARIANT=alpine
- - VERSION=2.8 VARIANT=centos
- - VERSION=2.8 VARIANT=scratch
+  matrix:
+#    - VERSION=snapshot VARIANT=ubuntu
+#    - VERSION=snapshot VARIANT=alpine
+#    - VERSION=snapshot VARIANT=centos
+#    - VERSION=snapshot VARIANT=scratch
+    - VERSION=4.0 VARIANT=ubuntu
+#    - VERSION=4.0 VARIANT=alpine
+#    - VERSION=4.0 VARIANT=centos
+#    - VERSION=4.0 VARIANT=scratch
+#    - VERSION=3.4 VARIANT=ubuntu
+#    - VERSION=3.4 VARIANT=alpine
+#    - VERSION=3.4 VARIANT=centos
+#    - VERSION=3.4 VARIANT=scratch
+#    - VERSION=3.3 VARIANT=ubuntu
+#    - VERSION=3.3 VARIANT=alpine
+#    - VERSION=3.3 VARIANT=centos
+#    - VERSION=3.3 VARIANT=scratch
+#    - VERSION=3.2 VARIANT=ubuntu
+#    - VERSION=3.2 VARIANT=alpine
+#    - VERSION=3.2 VARIANT=centos
+#    - VERSION=3.2 VARIANT=scratch
+#    - VERSION=3.1 VARIANT=ubuntu
+#    - VERSION=3.1 VARIANT=alpine
+#    - VERSION=3.1 VARIANT=centos
+#    - VERSION=3.1 VARIANT=scratch
+#    - VERSION=3.0 VARIANT=ubuntu
+#    - VERSION=3.0 VARIANT=alpine
+#    - VERSION=3.0 VARIANT=centos
+#    - VERSION=3.0 VARIANT=scratch
+#    - VERSION=2.8 VARIANT=ubuntu
+#    - VERSION=2.8 VARIANT=alpine
+#    - VERSION=2.8 VARIANT=centos
+#    - VERSION=2.8 VARIANT=scratch
+  global:
+    - IMAGE_NAME: ffmpeg
+    - DOCKER_USERNAME: rishabh9
+    - secure: R6FpNpVdmWyfsyKjwEjhc7GzudpfCdIiDSOANfW8eb/RQBZx/4NzTKa7KcnAuQuS94r3gMlFLxBwfFx7dzcj21eWeH7T2yvyPaoHmzmGX2oFmGzhTU9sDUxs+OxpsK34rDlgFKknm0p5WWL6oLFeibRqiIiGpxAglYwGwtjncTCdNWyABxixoU1VIk0hJ31UzVlxibHjWFUkdr0q9H1k7qXMWBnk8NTwj86Wq07Bg1iuHQLM3FtRry6qK83F81k6PKukbZoXKoHsc8GPpGC1E5yU+yy13WbXu5tFj9emXs13Bs/MCXBt2xikck4Lt2ayL6+2WqpOs2XrE8016sLgriQmQraau1wY3Aic3X6E/IkVDuT8KIQZeEzAdMqbS/AA2bDgBoT16tsda8SERi0D3RpI2FjalhAIUM7bH+6tzCJ7/2d/2uqwkS1OSSb6c/9KEbVaIOiIccgT4uFAz/wpDmuJWoLJmvuinlKKtEl4QRZ29NkgU23QHfQwaJqol0C6cCL4rAvldxubM6ZntDeUbv/QtWjlBgwqGLnq/pcCGTfQqEQ3PQWXpvunobznJ+yK5O8IjA9gfIAZkFmjgbb1o5ATf00bJn6OP5iGMltDFsFBxHTktNdpwGTwAHObJxGFo+oY5i1XZM62vXaHw04/k9f++fSvzT2pyHuwfsSkc50=
+    - secure: "LrFoJY4/h3EEUX6iDmbJYJEIuEirRmgZjtAZ/u8F3jJvEP/1aV1MHqhYYvJMQnofNwnQwOo4a5y98r8aCMEQsBKf+PCbb7qMCbmqsXDYz4AoZmK7PBWqYDJ8MoC8ZA9e9aaWh5uwVOE5yVsCPzrEW3SEUbObKEcNV4Z7LzCAyoFMM81Youj+6f/nUuhsxhTR1QfLunee9ohdcNs+vaK1PY/q1o3Z4hghtVeRVjAvf6ddkZ09SsLwKYQ3fxULm7xcRVHuRy7yr+k9qtQraCtGthomGknUOFpthGIQPS8EujBeKKs2gfQUww2Y+h03CZ1vnEDo2qmnCo4ov47Ye7fMNOQQKaEXBpNjE+SDRh93gPIh4mU0eCWZFK+M5DM08ilaaoVWvAJcj0cD3HqqzU4HmhN/xOiydLrfzMhg9lS1nhl3OAwkH+wQSrfVbYdHzdY3FquuTCQ95WKE5cgeE6h75kB+3DIyHyy1UkXUpRpjCT2n1gx3+gEC4Ptzn0+BVhRmS9s9QtqCNHGuVwyq/wFWwAm3AttMUqAeKXc/1RI4HhlJf2sSMZISWdgaVbxg7+3oozBZ27LsiDZy3lE0CDNfNTy9eQU3muwzaoCMe5giIqYGNm2mFs7oFRsDP840JOJyWZ4wCl3UTv9/siHgaddpMn+hC9H9/xuCQferqaY7nQ4="
 
 branches:
   only:
@@ -49,7 +55,7 @@ before_install:
 
 before_script:
   - env | sort
-  - image="ffmpeg:${VERSION}-${VARIANT:-ubuntu}"
+  - image="${IMAGE_NAME}:${VERSION}-${VARIANT:-ubuntu}"
 
 script:
   - docker build -t "${image}" --build-arg MAKEFLAGS="-j$(($(grep -c ^processor /proc/cpuinfo) + 1))" docker-images/${VERSION}/${VARIANT}
@@ -57,4 +63,9 @@ script:
 
 after_script:
   - docker images
-# vim:set et ts=2 sw=2:
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
