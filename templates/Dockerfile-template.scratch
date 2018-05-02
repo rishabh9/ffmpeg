@@ -1,6 +1,6 @@
 # ffmpeg - http://ffmpeg.org/download.html
 #
-# https://hub.docker.com/r/jrottenberg/ffmpeg/
+# https://hub.docker.com/r/rishabh9/ffmpeg/
 #
 #
 
@@ -50,7 +50,7 @@ RUN \
 
 ### Release Stage
 FROM        scratch AS release
-MAINTAINER  Julien Rottenberg <julien@rottenberg.info>
+MAINTAINER  Rishabh Joshi <rishabh9@gmail.com>
 
 CMD         ["--help"]
 ENTRYPOINT  ["/bin/ffmpeg"]
@@ -59,4 +59,4 @@ COPY --from=build /tmp/fakeroot/ /
 
 
 # Let's make sure the app built correctly
-# Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
+# Convenient to verify on https://hub.docker.com/r/rishabh9/ffmpeg/builds/ console output

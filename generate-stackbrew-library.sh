@@ -13,9 +13,9 @@ hash git 2>/dev/null || { echo >&2 "git not found, exiting."; }
 
 versions=( */ )
 versions=( "${versions[@]%/}" )
-url='git://github.com/jrottenberg/ffmpeg'
+url='git://github.com/rishabh9/ffmpeg'
 
-echo '# maintainer: Julien Rottenberg <julien@rottenberg.info>'
+echo '# maintainer: Rishabh Joshi <rishabh9@gmail.com>'
 
 for version in "${versions[@]}"; do
 	if [[ "$version" == "docs" ]]; then
