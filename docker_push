@@ -8,5 +8,5 @@ docker push $DOCKER_USERNAME/$IMAGE
 
 
 # Bintray's Docker Registry 
-echo "${BINTRAY_API_KEY}" | docker login -u "${DOCKER_USERNAME}" --password-stdin rishabh9-docker-registry.bintray.io && \
-docker push rishabh9-docker-registry.bintray.io/$IMAGE
+echo "${BINTRAY_API_KEY}" | docker login -u "${DOCKER_USERNAME}" --password-stdin $BINTRAY_REPO && \
+docker push $BINTRAY_REPO/$IMAGE

@@ -40,7 +40,8 @@ env:
   global:
     - IMAGE_NAME: ffmpeg
     - DOCKER_USERNAME: rishabh9
-    - secure: R6FpNpVdmWyfsyKjwEjhc7GzudpfCdIiDSOANfW8eb/RQBZx/4NzTKa7KcnAuQuS94r3gMlFLxBwfFx7dzcj21eWeH7T2yvyPaoHmzmGX2oFmGzhTU9sDUxs+OxpsK34rDlgFKknm0p5WWL6oLFeibRqiIiGpxAglYwGwtjncTCdNWyABxixoU1VIk0hJ31UzVlxibHjWFUkdr0q9H1k7qXMWBnk8NTwj86Wq07Bg1iuHQLM3FtRry6qK83F81k6PKukbZoXKoHsc8GPpGC1E5yU+yy13WbXu5tFj9emXs13Bs/MCXBt2xikck4Lt2ayL6+2WqpOs2XrE8016sLgriQmQraau1wY3Aic3X6E/IkVDuT8KIQZeEzAdMqbS/AA2bDgBoT16tsda8SERi0D3RpI2FjalhAIUM7bH+6tzCJ7/2d/2uqwkS1OSSb6c/9KEbVaIOiIccgT4uFAz/wpDmuJWoLJmvuinlKKtEl4QRZ29NkgU23QHfQwaJqol0C6cCL4rAvldxubM6ZntDeUbv/QtWjlBgwqGLnq/pcCGTfQqEQ3PQWXpvunobznJ+yK5O8IjA9gfIAZkFmjgbb1o5ATf00bJn6OP5iGMltDFsFBxHTktNdpwGTwAHObJxGFo+oY5i1XZM62vXaHw04/k9f++fSvzT2pyHuwfsSkc50=
+    - BINTRAY_REPO: rishabh9-docker-dkrimg.bintray.io
+    - secure: "qZtwDJgACjctbvs2XugLiLu/ZyTLJQM8UF08gMoo6hGxsf8JafVhr41gw1bhFkRSyydCiU1N0cFafvoPT1Fs0tbNNwxXwxSXCHTvirkBs8Nati57JRkxwH2KVmxwrmYHXqubjPp2DzXeG0++8AEncPbJNhQASsJeJBwOsGON7gyZNOczNk16Yt0G3IwFwkBgnMvVAiNcoS7E988F9oStJ+JTZS6gugqcqgyGbnmhlIvITZUWYpafpWCfR+YzcFtLFKmCJD8wLKcpmBWczxZ4WBvuk5PYCIK8ogUXh6rK3w7zFttQWr4J/KUI4r6hoeo/xojDixlxDQejoEIfgpyxmkJLZv6kgbbevkQFqfd0s821VD0+6ON5gOWUsrovbJkKUckfdyLI6mcWKDp7ixz0Hs7drxVuoDL6zeq2aXbDXv3w86+UJ7tfvR1hsBfC5bGibg5BY58ziPAq5xyKy6YPpVMKRt+QBSN9hjUw1gr61IPFK1tNVfpumkn+07v5fRvrgvMR8aAdnZ0NeGoJsQqJACCgC9UQPKb3Mk7ugHgGscw5L86zpBm1zESiVzxh09TCr6d/5AbIBKv52f0G76BDtk85ODoSpbRbeHqkESuYJW1n7LL1L/GVxrm+1A5ghZ8mgGg4QumYlpTpMzr6LXVevMd7BUhsAiBAwe7K1pkdno4="
     - secure: "LrFoJY4/h3EEUX6iDmbJYJEIuEirRmgZjtAZ/u8F3jJvEP/1aV1MHqhYYvJMQnofNwnQwOo4a5y98r8aCMEQsBKf+PCbb7qMCbmqsXDYz4AoZmK7PBWqYDJ8MoC8ZA9e9aaWh5uwVOE5yVsCPzrEW3SEUbObKEcNV4Z7LzCAyoFMM81Youj+6f/nUuhsxhTR1QfLunee9ohdcNs+vaK1PY/q1o3Z4hghtVeRVjAvf6ddkZ09SsLwKYQ3fxULm7xcRVHuRy7yr+k9qtQraCtGthomGknUOFpthGIQPS8EujBeKKs2gfQUww2Y+h03CZ1vnEDo2qmnCo4ov47Ye7fMNOQQKaEXBpNjE+SDRh93gPIh4mU0eCWZFK+M5DM08ilaaoVWvAJcj0cD3HqqzU4HmhN/xOiydLrfzMhg9lS1nhl3OAwkH+wQSrfVbYdHzdY3FquuTCQ95WKE5cgeE6h75kB+3DIyHyy1UkXUpRpjCT2n1gx3+gEC4Ptzn0+BVhRmS9s9QtqCNHGuVwyq/wFWwAm3AttMUqAeKXc/1RI4HhlJf2sSMZISWdgaVbxg7+3oozBZ27LsiDZy3lE0CDNfNTy9eQU3muwzaoCMe5giIqYGNm2mFs7oFRsDP840JOJyWZ4wCl3UTv9/siHgaddpMn+hC9H9/xuCQferqaY7nQ4="
 
 branches:
@@ -60,6 +61,7 @@ before_script:
 script:
   - docker build -t "${image}" --build-arg MAKEFLAGS="-j$(($(grep -c ^processor /proc/cpuinfo) + 1))" docker-images/${VERSION}/${VARIANT}
   - docker run --rm ${image} -buildconf
+  - docker tag ${image} ${BINTRAY_REPO}/${image}
 
 after_script:
   - docker images
