@@ -1,6 +1,6 @@
 # ffmpeg - http://ffmpeg.org/download.html
 #
-# https://hub.docker.com/r/jrottenberg/ffmpeg/
+# https://hub.docker.com/r/rishabh9/ffmpeg/
 #
 #
 
@@ -307,7 +307,7 @@ RUN \
         make ; \
         make install ; \
         rm -rf ${dir}
-
+## speex https://www.speex.org/
 RUN \
         dir=/tmp/speex ; \
         mkdir -p ${dir} ; \
@@ -375,7 +375,7 @@ RUN \
 
 ### Release Stage
 FROM        base AS release
-MAINTAINER  Julien Rottenberg <julien@rottenberg.info>
+MAINTAINER  Rishabh Joshi <rishabh9@gmail.com>
 
 CMD         ["--help"]
 ENTRYPOINT  ["ffmpeg"]
@@ -383,4 +383,4 @@ ENTRYPOINT  ["ffmpeg"]
 COPY --from=build /usr/local /usr/local
 
 # Let's make sure the app built correctly
-# Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
+# Convenient to verify on https://hub.docker.com/r/rishabh9/ffmpeg/builds/ console output

@@ -2,7 +2,7 @@
 #
 # From https://trac.ffmpeg.org/wiki/CompilationGuide/Centos
 #
-# https://hub.docker.com/r/jrottenberg/ffmpeg/
+# https://hub.docker.com/r/rishabh9/ffmpeg/
 #
 #
 FROM    centos:7 AS base
@@ -308,7 +308,7 @@ RUN \
         make ; \
         make install ; \
         rm -rf ${dir}
-
+## speex https://www.speex.org/
 RUN \
         dir=/tmp/speex ; \
         mkdir -p ${dir} ; \
@@ -374,7 +374,7 @@ RUN \
         LD_LIBRARY_PATH=/usr/local/lib64 ffmpeg -buildconf
 
 FROM        base
-MAINTAINER  Julien Rottenberg <julien@rottenberg.info>
+MAINTAINER  Rishabh Joshi <rishabh9@gmail.com>
 
 CMD         ["--help"]
 ENTRYPOINT  ["ffmpeg"]
@@ -384,4 +384,4 @@ ENV LD_LIBRARY_PATH=/usr/local/lib64
 COPY --from=build /usr/local/ /usr/local/
 
 # Let's make sure the app built correctly
-# Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
+# Convenient to verify on https://hub.docker.com/r/rishabh9/ffmpeg/builds/ console output
