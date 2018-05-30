@@ -5,7 +5,7 @@
 # https://hub.docker.com/r/rishabh9/ffmpeg/
 #
 #
-FROM        ubuntu:16.04 AS base
+FROM        krallin/ubuntu-tini:16.04 AS base
 
 WORKDIR     /tmp/workdir
 
@@ -56,7 +56,7 @@ FROM        base AS release
 MAINTAINER  Rishabh Joshi <rishabh9@gmail.com>
 
 CMD         ["--help"]
-ENTRYPOINT  ["ffmpeg"]
+ENTRYPOINT ["/usr/local/bin/tini", "--", "ffmpeg"]
 ENV         LD_LIBRARY_PATH=/usr/local/lib
 
 COPY --from=build /usr/local /usr/local/
