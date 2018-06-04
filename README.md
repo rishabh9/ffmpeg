@@ -1,20 +1,20 @@
 FFmpeg Docker image
 ==================
 
- [![Docker Stars](https://img.shields.io/docker/stars/jrottenberg/ffmpeg.svg?style=plastic)](https://registry.hub.docker.com/v2/repositories/jrottenberg/ffmpeg/stars/count/) [![Docker pulls](https://img.shields.io/docker/pulls/jrottenberg/ffmpeg.svg?style=plastic)](https://registry.hub.docker.com/v2/repositories/jrottenberg/ffmpeg/)
-[![Travis](https://img.shields.io/travis/jrottenberg/ffmpeg/master.svg?maxAge=300?style=plastic)](https://travis-ci.org/jrottenberg/ffmpeg)
-[![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg?maxAge=2592000?style=plastic)](https://github.com/jrottenberg/ffmpeg/)
+ [![Docker Stars](https://img.shields.io/docker/stars/rishabh9/ffmpeg.svg?style=plastic)](https://registry.hub.docker.com/v2/repositories/rishabh9/ffmpeg/stars/count/) [![Docker pulls](https://img.shields.io/docker/pulls/rishabh9/ffmpeg.svg?style=plastic)](https://registry.hub.docker.com/v2/repositories/rishabh9/ffmpeg/)
+[![Travis](https://img.shields.io/travis/rishabh9/ffmpeg/master.svg?maxAge=300?style=plastic)](https://travis-ci.org/rishabh9/ffmpeg)
+[![Docker Automated build](https://img.shields.io/docker/automated/rishabh9/ffmpeg.svg?maxAge=2592000?style=plastic)](https://github.com/rishabh9/ffmpeg/)
 
 This project prepares a minimalist Docker image with FFmpeg. It compiles FFmpeg from sources following instructions from the [Compilation Guide](https://trac.ffmpeg.org/wiki/CompilationGuide).
 
-You can install the latest build of this image by running `docker pull jrottenberg/ffmpeg`.
+You can install the latest build of this image by running `docker pull rishabh9/ffmpeg`.
 
 This image can be used as a base for an encoding farm.
 
 Ubuntu builds
 --------------
 
-You can use jrottenberg/ffmpeg or jrottenberg/ffmpeg:3.3
+You can use rishabh9/ffmpeg or rishabh9/ffmpeg:3.3
 to get the latest build based on ubuntu.
 
 Note : I've made ubuntu the default after 3.1
@@ -25,20 +25,19 @@ scratch images `ffmpeg:X.Y-scratch` to get the latest. (Scratch is an experiment
 
 For information :
 
-```
+```bash
 centos-3.3          centos              28221bb909aa        About an hour ago    264MB
 ubuntu-3.3          ubuntu              d6b632a4fe7f        3 seconds ago        221MB
 alpine-3.3          alpine              725234fc4162        40 minutes ago       65.6MB
 scratch-3.3         scratch             34724534bb88        15 minutes ago       48.6MB
 ```
 
-
-Please use [Github issues](https://github.com/jrottenberg/ffmpeg/issues/new) to report any bug or missing feature.
+Please use [Github issues](https://github.com/rishabh9/ffmpeg/issues/new) to report any bug or missing feature.
 
 Test
 ----
 
-```
+```bash
 ffmpeg version 4.0 Copyright (c) 2000-2018 the FFmpeg developers
   built with gcc 5.4.0 (Ubuntu 5.4.0-6ubuntu1~16.04.9) 20160609
   configuration: --disable-debug --disable-doc --disable-ffplay --enable-shared --enable-avresample --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-gpl --enable-libass --enable-libspeex --enable-libfreetype --enable-libvidstab --enable-libmp3lame --enable-libopenjpeg --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx265 --enable-libxvid --enable-libx264 --enable-nonfree --enable-openssl --enable-libfdk_aac --enable-libkvazaar --enable-libaom --extra-libs=-lpthread --enable-postproc --enable-small --enable-version3 --extra-cflags=-I/opt/ffmpeg/include --extra-ldflags=-L/opt/ffmpeg/lib --extra-libs=-ldl --prefix=/opt/ffmpeg
@@ -91,8 +90,8 @@ ffmpeg version 4.0 Copyright (c) 2000-2018 the FFmpeg developers
 
 Capture output from the container to the host running the command
 
-```
- docker run jrottenberg/ffmpeg \
+```bash
+ docker run rishabh9/ffmpeg \
             -i http://url/to/media.mp4 \
             -stats \
             $ffmpeg_options  - > out.mp4
@@ -101,30 +100,31 @@ Capture output from the container to the host running the command
 ### Examples
 #### Extract 5s @00:49:42 into a GIF
 
-```
- docker run jrottenberg/ffmpeg -stats  \
+```bash
+ docker run rishabh9/ffmpeg -stats  \
         -i http://archive.org/download/thethreeagesbusterkeaton/Buster.Keaton.The.Three.Ages.ogv \
         -loop 0  \
         -final_delay 500 -c:v gif -f gif -ss 00:49:42 -t 5 - > trow_ball.gif
 ```
 
 #### Convert 10bits MKV into a 10Bits MP4
-```
- docker run -v $PWD:/tmp jrottenberg/ffmpeg:3.4-scratch \
+
+```bash
+ docker run -v $PWD:/tmp rishabh9/ffmpeg:3.4-scratch \
         -stats \ 
         -i http://www.jell.yfish.us/media/jellyfish-20-mbps-hd-hevc-10bit.mkv \
         -c:v libx265 -pix_fmt yuv420p10 \
         -t 5 -f mp4 /tmp/test.mp4
 ```
+
 The image has been compiled with [X265 Multilib](https://x265.readthedocs.io/en/default/api.html#multi-library-interface).
 Use the pixel format switch to change the number of bits per pixel by suffixing it with 10 for 10bits or 12 for 12bits.
-
 
 See what's inside the beast
 ---------------------------
 
-```
-docker run -it --entrypoint='bash' jrottenberg/ffmpeg
+```bash
+docker run -it --entrypoint='bash' rishabh9/ffmpeg
 
 for i in ogg amr vorbis theora mp3lame opus vpx xvid fdk x264 x265;do echo $i; find /usr/local/ -name *$i*;done
 ```
@@ -151,12 +151,10 @@ See Dockerfile-env to update a version
 - [X265_VERSION](https://bitbucket.org/multicoreware/x265/downloads/):[GNU General Public License (GPL) version 2](https://bitbucket.org/multicoreware/x265/raw/f8ae7afc1f61ed0db3b2f23f5d581706fe6ed677/COPYING)
 - [SPEEX_VERSION](https://www.speex.org/): [Revised BSD License](https://www.xiph.org/licenses/bsd/speex/)
 
-
 Contribute
 -----------
 
-
-```
+```bash
 # Add / fix stuff
 ${EDITOR} templates/
 
@@ -169,6 +167,5 @@ docker build -t my-build docker-images/VERSION/
 # Make sure all variants pass before Travis does
 find ffmpeg/ -name Dockerfile | xargs dirname | parallel --no-notice -j 4 --results logs docker build -t {} {}
 ```
-
 
 Commit the templates files THEN all the generated Dockerfile for a merge request. So it's easier to review the template change.
