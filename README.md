@@ -1,5 +1,4 @@
-FFmpeg Docker image
-==================
+# FFmpeg Docker image
 
  [![Docker Stars](https://img.shields.io/docker/stars/rishabh9/ffmpeg.svg?style=plastic)](https://registry.hub.docker.com/v2/repositories/rishabh9/ffmpeg/stars/count/) [![Docker pulls](https://img.shields.io/docker/pulls/rishabh9/ffmpeg.svg?style=plastic)](https://registry.hub.docker.com/v2/repositories/rishabh9/ffmpeg/)
 [![Travis](https://img.shields.io/travis/rishabh9/ffmpeg/master.svg?maxAge=300?style=plastic)](https://travis-ci.org/rishabh9/ffmpeg)
@@ -11,8 +10,7 @@ You can install the latest build of this image by running `docker pull rishabh9/
 
 This image can be used as a base for an encoding farm.
 
-Ubuntu builds
---------------
+## Ubuntu builds
 
 You can use rishabh9/ffmpeg or rishabh9/ffmpeg:3.3
 to get the latest build based on ubuntu.
@@ -34,8 +32,7 @@ scratch-3.3         scratch             34724534bb88        15 minutes ago      
 
 Please use [Github issues](https://github.com/rishabh9/ffmpeg/issues/new) to report any bug or missing feature.
 
-Test
-----
+## Test
 
 ```bash
 ffmpeg version 4.0 Copyright (c) 2000-2018 the FFmpeg developers
@@ -98,6 +95,7 @@ Capture output from the container to the host running the command
 ```
 
 ### Examples
+
 #### Extract 5s @00:49:42 into a GIF
 
 ```bash
@@ -120,8 +118,7 @@ Capture output from the container to the host running the command
 The image has been compiled with [X265 Multilib](https://x265.readthedocs.io/en/default/api.html#multi-library-interface).
 Use the pixel format switch to change the number of bits per pixel by suffixing it with 10 for 10bits or 12 for 12bits.
 
-See what's inside the beast
----------------------------
+## See what's inside the beast
 
 ```bash
 docker run -it --entrypoint='bash' rishabh9/ffmpeg
@@ -129,8 +126,7 @@ docker run -it --entrypoint='bash' rishabh9/ffmpeg
 for i in ogg amr vorbis theora mp3lame opus vpx xvid fdk x264 x265;do echo $i; find /usr/local/ -name *$i*;done
 ```
 
-Keep up to date
----------------
+## Keep up to date
 
 See Dockerfile-env to update a version
 
@@ -151,8 +147,7 @@ See Dockerfile-env to update a version
 - [X265_VERSION](https://bitbucket.org/multicoreware/x265/downloads/):[GNU General Public License (GPL) version 2](https://bitbucket.org/multicoreware/x265/raw/f8ae7afc1f61ed0db3b2f23f5d581706fe6ed677/COPYING)
 - [SPEEX_VERSION](https://www.speex.org/): [Revised BSD License](https://www.xiph.org/licenses/bsd/speex/)
 
-Contribute
------------
+## Contribute
 
 ```bash
 # Add / fix stuff
