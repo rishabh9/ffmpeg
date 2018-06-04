@@ -109,7 +109,7 @@ Capture output from the container to the host running the command
 
 ```bash
  docker run -v $PWD:/tmp rishabh9/ffmpeg:3.4-scratch \
-        -stats \ 
+        -stats \
         -i http://www.jell.yfish.us/media/jellyfish-20-mbps-hd-hevc-10bit.mkv \
         -c:v libx265 -pix_fmt yuv420p10 \
         -t 5 -f mp4 /tmp/test.mp4
